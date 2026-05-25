@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: minimal-secure-protocol
+Version: 0.1.0
+Summary: Best-practice IETF security for a toy telescope control protocol
+License: MIT
+Requires-Python: >=3.12
+Requires-Dist: flask>=3.0
+Requires-Dist: PyJWT[crypto]>=2.8
+Requires-Dist: cryptography>=42.0
+Requires-Dist: requests>=2.31
+Requires-Dist: click>=8.1
+Requires-Dist: pydantic>=2.6
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-cov>=5.0; extra == "dev"
+Requires-Dist: requests-mock>=1.11; extra == "dev"

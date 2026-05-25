@@ -1,0 +1,11 @@
+flask>=3.0
+PyJWT[crypto]>=2.8
+cryptography>=42.0
+requests>=2.31
+click>=8.1
+pydantic>=2.6
+
+# dev / test
+pytest>=8.0
+pytest-cov>=5.0
+requests-mock>=1.11

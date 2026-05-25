@@ -1,0 +1,73 @@
+{
+  "ietf-mud:mud": {
+    "mud-version": 1,
+    "mud-url": "https://manufacturer.example/telescope-mount.mud.json",
+    "last-update": "2024-01-01T00:00:00Z",
+    "cache-validity": 48,
+    "is-supported": true,
+    "systeminfo": "Telescope Mount Controller – minimal-secure-protocol demo",
+    "mfg-name": "MinimalSecureProtocol",
+    "model-name": "TelescopeMount-001",
+    "documentation": "https://github.com/nealmcb/minimal-secure-protocol",
+    "from-device-policy": {
+      "access-lists": {
+        "access-list": [
+          {
+            "name": "from-device-ipv4",
+            "type": "ipv4-acl-type",
+            "ace": [
+              {
+                "name": "allow-ntp-udp",
+                "matches": {
+                  "ipv4": {"protocol": 17},
+                  "udp": {
+                    "destination-port": {
+                      "operator": "eq",
+                      "port": 123
+                    }
+                  }
+                },
+                "actions": {"forwarding": "accept"}
+              },
+              {
+                "name": "deny-all-outbound",
+                "matches": {},
+                "actions": {"forwarding": "drop"}
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "to-device-policy": {
+      "access-lists": {
+        "access-list": [
+          {
+            "name": "to-device-ipv4",
+            "type": "ipv4-acl-type",
+            "ace": [
+              {
+                "name": "allow-telescope-api-tls",
+                "matches": {
+                  "ipv4": {"protocol": 6},
+                  "tcp": {
+                    "destination-port": {
+                      "operator": "eq",
+                      "port": 8443
+                    }
+                  }
+                },
+                "actions": {"forwarding": "accept"}
+              },
+              {
+                "name": "deny-all-inbound",
+                "matches": {},
+                "actions": {"forwarding": "drop"}
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
