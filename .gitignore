@@ -1,0 +1,5 @@
+*.pyc
+__pycache__/
+*.egg-info/
+.telescope_token.json
+device_config.json

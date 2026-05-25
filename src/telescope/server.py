@@ -154,8 +154,8 @@ def create_resource_server_app(
                     )
                 except jwt.ExpiredSignatureError:
                     return jsonify({"error": "token_expired"}), 401
-                except jwt.InvalidTokenError as exc:
-                    return jsonify({"error": "invalid_token", "description": str(exc)}), 401
+                except jwt.InvalidTokenError:
+                    return jsonify({"error": "invalid_token", "description": "Token validation failed"}), 401
 
                 if is_revoked(claims.get("jti", "")):
                     return jsonify({"error": "token_revoked"}), 401
@@ -199,8 +199,8 @@ def create_resource_server_app(
         data = request.get_json(silent=True) or {}
         try:
             cmd = SlewCommand(**data)
-        except Exception as exc:
-            return jsonify({"error": "invalid_request", "description": str(exc)}), 400
+        except Exception:
+            return jsonify({"error": "invalid_request", "description": "Invalid slew parameters"}), 400
 
         mount.log_connection(g.client_id, "POST /slew")
         mount.slew_to(cmd.ra, cmd.dec)

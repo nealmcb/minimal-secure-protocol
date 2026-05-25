@@ -156,8 +156,8 @@ def create_auth_app(
         # Validate request
         try:
             req = TokenRequest(**data)
-        except Exception as exc:
-            return jsonify({"error": "invalid_request", "error_description": str(exc)}), 400
+        except Exception:
+            return jsonify({"error": "invalid_request", "error_description": "Malformed token request"}), 400
 
         # Authenticate client
         client = _REGISTERED_CLIENTS.get(req.client_id)
