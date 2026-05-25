@@ -1,0 +1,5 @@
+[console_scripts]
+telescope-admin = scripts.admin:main
+telescope-auth = telescope.auth:main
+telescope-client = telescope.client:main
+telescope-server = telescope.server:main

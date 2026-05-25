@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+src/minimal_secure_protocol.egg-info/PKG-INFO
+src/minimal_secure_protocol.egg-info/SOURCES.txt
+src/minimal_secure_protocol.egg-info/dependency_links.txt
+src/minimal_secure_protocol.egg-info/entry_points.txt
+src/minimal_secure_protocol.egg-info/requires.txt
+src/minimal_secure_protocol.egg-info/top_level.txt
+src/telescope/__init__.py
+src/telescope/auth.py
+src/telescope/client.py
+src/telescope/protocol.py
+src/telescope/server.py
+src/telescope/tls_config.py
+tests/test_auth.py
+tests/test_protocol.py

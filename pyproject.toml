@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minimal-secure-protocol"
+version = "0.1.0"
+description = "Best-practice IETF security for a toy telescope control protocol"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+dependencies = [
+    "flask>=3.0",
+    "PyJWT[crypto]>=2.8",
+    "cryptography>=42.0",
+    "requests>=2.31",
+    "click>=8.1",
+    "pydantic>=2.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "requests-mock>=1.11",
+]
+
+[project.scripts]
+telescope-server   = "telescope.server:main"
+telescope-client   = "telescope.client:main"
+telescope-auth     = "telescope.auth:main"
+telescope-admin    = "scripts.admin:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
